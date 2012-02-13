@@ -1,0 +1,10 @@
+- Node with the capability to say how many vnodes it can support.
+- Default number of vnodes per node is predetermined by the program
+- For a key, a set of applicable vnodes (as requested) which can be used for storing in the priority order is provided. The order is also useful for replication
+- Truly circular setup - so if a key has a hash value which is higher than the value of the hash of any of the nodes, then the algorithm will circle back and start from node which has the lowest hash value. 
+- Ability to test out various combinations 
+
+----------------------------------------------------------------------
+- The distribution is based on vNodes - so the list of prioritized vnodes might belong to smaller collection of nodes (or even a single node).
+- Till the point when the specific vnode on which the key is hashed to is available the algorithm always gives the same vnode (even when many other nodes and hence vnodes are taken out). Once the appropriate node (and corresponding vnode) is out, the hash happens to next available one. When the node comes back, the hashing goes back to returning node. 
+
