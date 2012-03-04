@@ -16,14 +16,6 @@ public class NodeManagerImpl implements NodeManger {
 
 	private static final String delimiter = ":";
 
-	public NodeManagerImpl(List<Node> nodes) {
-		initializeNodes(nodes);
-	}
-
-	public NodeManagerImpl() {
-		this(null);
-	}
-
 	private void initializeNodes(List<Node> nodes) {
 		if (nodes == null || nodes.isEmpty())
 			return;
@@ -45,6 +37,14 @@ public class NodeManagerImpl implements NodeManger {
 
 	private String getVNodeIdentifier(String identifier, int j) {
 		return identifier + delimiter + j;
+	}
+
+	public NodeManagerImpl() {
+		this(null);
+	}
+
+	public NodeManagerImpl(List<Node> nodes) {
+		initializeNodes(nodes);
 	}
 
 	public int getNumberOfVNodes() {
@@ -113,12 +113,13 @@ public class NodeManagerImpl implements NodeManger {
 
 	public Set<Node> getAvailableNodes() {
 		Collection<Node> nodeColl = circle.values();
-		Set nonDupSet = new HashSet();
+		Set<Node> nonDupSet = new HashSet<Node>();
 		for (Node node : nodeColl) {
 			nonDupSet.add(node);
 		}
 		return nonDupSet;
 	}
+
 	public Map<Integer,Node> getAvailableVNodes() {
 		return circle;
 	}

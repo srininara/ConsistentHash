@@ -24,5 +24,4 @@ public interface NodeManger {
 	
 	Map<Integer,Node> findSuitableVNodes(String key, int numberOfNodes);
 
-
 }
